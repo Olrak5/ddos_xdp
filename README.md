@@ -56,6 +56,28 @@ In /root/vroot-linux copy and rename Debian directories to Ubuntu ones
 cp -r debian-12-min ubuntu-24.04-min
 cp -r debian-12 ubuntu-24.04
 ```
+
+In ubuntu-24.04-min Dockerfile change these lines
+```
+FROM debian:12
+
+COPY debian-12-min/* /build/
+```
+to
+```
+FROM ubuntu:24.04
+ubuntu-24.04-min/* /build/
+```
+and
+
+```
+FROM debian:12
+```
+to
+```
+FROM ubuntu:24.04
+```
+
 ```
 # diff -r ubuntu-24.04-min debian-12-min/
 < FROM ubuntu:24.04
