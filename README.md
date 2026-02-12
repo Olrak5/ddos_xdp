@@ -67,7 +67,7 @@ to
 ```bash
 FROM ubuntu:24.04
 
-ubuntu-24.04-min/* /build/
+COPY ubuntu-24.04-min/* /build/
 ```
 
 In ubuntu-24.04 Dockerfile change these lines
