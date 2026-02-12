@@ -3,7 +3,7 @@ A simple ddos blocker via bpf/xdp written in C.
 
 # INSTALL INSTRUCTIONS 
 
-##IMUNES
+## IMUNES
 
 ### DOWNLOAD
 IMUNES-Ubuntu_20250307.ova
@@ -23,7 +23,25 @@ student
 Internet1
 
 
-##
+## IMAGES
+
+### UPDATES
+
+```bash
+sudo su
+
+cd /root/imunes
+git pull
+make install
+
+cd /root/vroot-linux
+git pull
+
+apt update
+apt upgrade
+reboot
+```
+
 
 
 
