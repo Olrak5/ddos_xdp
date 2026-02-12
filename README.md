@@ -125,6 +125,7 @@ Run setup script
 or manually install requirements to image
 (help on [MHDDoS](https://github.com/MatrixTM/MHDDoS))
 ```
+# Run inside docker image and commit after successful install
 apt -y update
 apt install curl wget libcurl4 libssl-dev python3 python3-pip python3-venv make cmake automake autoconf m4 build-essential git
 git clone https://github.com/MatrixTM/MHDDoS.git
