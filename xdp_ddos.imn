@@ -1,0 +1,258 @@
+{
+    "options" : {
+        "version" : "2"
+    },
+    "nodes"   : {
+        "n1" : {
+            "type"                : "host",
+            "name"                : "SERVER",
+            "auto_default_routes" : "enabled",
+            "ifaces"              : {
+                "ifc0" : {
+                    "type"       : "lo",
+                    "name"       : "lo0",
+                    "ipv4_addrs" : ["127.0.0.1/8"],
+                    "ipv6_addrs" : ["::1/128"]
+                },
+                "ifc1" : {
+                    "type"       : "phys",
+                    "name"       : "eth0",
+                    "link"       : "l3",
+                    "ipv4_addrs" : ["10.0.3.10/24"],
+                    "ipv6_addrs" : ["fc00:3::10/64"],
+                    "mac"        : "42:00:aa:00:00:07"
+                }
+            },
+            "custom_image"        : "imunes/ubuntu"
+        },
+        "n2" : {
+            "type"                : "pc",
+            "name"                : "TCP_DDOS",
+            "auto_default_routes" : "enabled",
+            "ifaces"              : {
+                "ifc0" : {
+                    "type"       : "lo",
+                    "name"       : "lo0",
+                    "ipv4_addrs" : ["127.0.0.1/8"],
+                    "ipv6_addrs" : ["::1/128"]
+                },
+                "ifc1" : {
+                    "type"       : "phys",
+                    "name"       : "eth0",
+                    "link"       : "l0",
+                    "ipv4_addrs" : ["10.0.0.20/24"],
+                    "ipv6_addrs" : ["fc00::20/64"],
+                    "mac"        : "42:00:aa:00:00:00"
+                }
+            },
+            "custom_image"        : "mhddos"
+        },
+        "n3" : {
+            "type"                : "pc",
+            "name"                : "UDP_DDOS",
+            "auto_default_routes" : "enabled",
+            "ifaces"              : {
+                "ifc0" : {
+                    "type"       : "lo",
+                    "name"       : "lo0",
+                    "ipv4_addrs" : ["127.0.0.1/8"],
+                    "ipv6_addrs" : ["::1/128"]
+                },
+                "ifc1" : {
+                    "type"       : "phys",
+                    "name"       : "eth0",
+                    "link"       : "l1",
+                    "ipv4_addrs" : ["10.0.1.20/24"],
+                    "ipv6_addrs" : ["fc00:1::20/64"],
+                    "mac"        : "42:00:aa:00:00:02"
+                }
+            },
+            "custom_image"        : "mhddos"
+        },
+        "n4" : {
+            "type"                : "pc",
+            "name"                : "ICMP_DDOS",
+            "auto_default_routes" : "enabled",
+            "ifaces"              : {
+                "ifc0" : {
+                    "type"       : "lo",
+                    "name"       : "lo0",
+                    "ipv4_addrs" : ["127.0.0.1/8"],
+                    "ipv6_addrs" : ["::1/128"]
+                },
+                "ifc1" : {
+                    "type"       : "phys",
+                    "name"       : "eth0",
+                    "link"       : "l2",
+                    "ipv4_addrs" : ["10.0.2.20/24"],
+                    "ipv6_addrs" : ["fc00:2::20/64"],
+                    "mac"        : "42:00:aa:00:00:04"
+                }
+            },
+            "custom_image"        : "mhddos"
+        },
+        "n0" : {
+            "type"                : "router",
+            "name"                : "router1",
+            "model"               : "frr",
+            "router_config"       : "rip 1 ripng 1 ospf 0 ospf6 0 bgp 0 ldp 0",
+            "auto_default_routes" : "enabled",
+            "ifaces"              : {
+                "ifc0" : {
+                    "type"       : "lo",
+                    "name"       : "lo0",
+                    "ipv4_addrs" : ["127.0.0.1/8"],
+                    "ipv6_addrs" : ["::1/128"]
+                },
+                "ifc1" : {
+                    "type"       : "phys",
+                    "name"       : "eth0",
+                    "link"       : "l0",
+                    "ipv4_addrs" : ["10.0.0.1/24"],
+                    "ipv6_addrs" : ["fc00::1/64"],
+                    "mac"        : "42:00:aa:00:00:01"
+                },
+                "ifc2" : {
+                    "type"       : "phys",
+                    "name"       : "eth1",
+                    "link"       : "l1",
+                    "ipv4_addrs" : ["10.0.1.1/24"],
+                    "ipv6_addrs" : ["fc00:1::1/64"],
+                    "mac"        : "42:00:aa:00:00:03"
+                },
+                "ifc3" : {
+                    "type"       : "phys",
+                    "name"       : "eth2",
+                    "link"       : "l2",
+                    "ipv4_addrs" : ["10.0.2.1/24"],
+                    "ipv6_addrs" : ["fc00:2::1/64"],
+                    "mac"        : "42:00:aa:00:00:05"
+                },
+                "ifc4" : {
+                    "type"       : "phys",
+                    "name"       : "eth3",
+                    "link"       : "l3",
+                    "ipv4_addrs" : ["10.0.3.1/24"],
+                    "ipv6_addrs" : ["fc00:3::1/64"],
+                    "mac"        : "42:00:aa:00:00:06"
+                },
+                "ifc5" : {
+                    "type"       : "phys",
+                    "name"       : "eth4",
+                    "link"       : "l4",
+                    "ipv4_addrs" : ["10.0.4.1/24"],
+                    "ipv6_addrs" : ["fc00:4::1/64"],
+                    "mac"        : "42:00:aa:00:00:08"
+                }
+            }
+        },
+        "n5" : {
+            "type"                : "pc",
+            "name"                : "CLIENT",
+            "auto_default_routes" : "enabled",
+            "ifaces"              : {
+                "ifc0" : {
+                    "type"       : "lo",
+                    "name"       : "lo0",
+                    "ipv4_addrs" : ["127.0.0.1/8"],
+                    "ipv6_addrs" : ["::1/128"]
+                },
+                "ifc1" : {
+                    "type"       : "phys",
+                    "name"       : "eth0",
+                    "link"       : "l4",
+                    "ipv4_addrs" : ["10.0.4.20/24"],
+                    "ipv6_addrs" : ["fc00:4::20/64"],
+                    "mac"        : "42:00:aa:00:00:09"
+                }
+            }
+        }
+    },
+    "links"   : {
+        "l0" : {
+            "peers"        : "n2 n0",
+            "peers_ifaces" : "ifc1 ifc1"
+        },
+        "l1" : {
+            "peers"        : "n3 n0",
+            "peers_ifaces" : "ifc1 ifc2"
+        },
+        "l2" : {
+            "peers"        : "n4 n0",
+            "peers_ifaces" : "ifc1 ifc3"
+        },
+        "l3" : {
+            "peers"        : "n0 n1",
+            "peers_ifaces" : "ifc4 ifc1"
+        },
+        "l4" : {
+            "peers"        : "n0 n5",
+            "peers_ifaces" : "ifc5 ifc1"
+        }
+    },
+    "gui"     : {
+        "canvases" : {
+            "c0" : {
+                "name" : "Canvas0"
+            }
+        },
+        "nodes"    : {
+            "n1" : {
+                "label"       : "SERVER",
+                "canvas"      : "c0",
+                "iconcoords"  : "552 288",
+                "labelcoords" : "552 324"
+            },
+            "n2" : {
+                "label"       : "TCP_DDOS",
+                "canvas"      : "c0",
+                "iconcoords"  : "312 120",
+                "labelcoords" : "312 151"
+            },
+            "n3" : {
+                "label"       : "UDP_DDOS",
+                "canvas"      : "c0",
+                "iconcoords"  : "72 288",
+                "labelcoords" : "72 319"
+            },
+            "n4" : {
+                "label"       : "ICMP_DDOS",
+                "canvas"      : "c0",
+                "iconcoords"  : "72 120",
+                "labelcoords" : "72 151"
+            },
+            "n0" : {
+                "label"       : "router1",
+                "canvas"      : "c0",
+                "iconcoords"  : "312 288",
+                "labelcoords" : "312 313"
+            },
+            "n5" : {
+                "label"       : "CLIENT",
+                "canvas"      : "c0",
+                "iconcoords"  : "312 456",
+                "labelcoords" : "312 487"
+            }
+        },
+        "options"  : {
+            "show_interface_ipv6" : "0"
+        },
+        "links"    : {
+            "l0" : {
+                "peers" : "n2 n0"
+            },
+            "l1" : {
+                "peers" : "n3 n0"
+            },
+            "l2" : {
+                "peers" : "n4 n0"
+            },
+            "l3" : {
+                "peers" : "n0 n1"
+            },
+            "l4" : {
+                "peers" : "n0 n5"
+            }
+        }
+    }
+}
