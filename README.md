@@ -66,17 +66,27 @@ COPY debian-12-min/* /build/
 to
 ```
 FROM ubuntu:24.04
+
 ubuntu-24.04-min/* /build/
 ```
-and
 
+In ubuntu-24.04 Dockerfile change these lines
 ```
-FROM debian:12
+FROM imunes/template:debian-12-min
+
+COPY debian-12-min/* /build/
 ```
 to
 ```
-FROM ubuntu:24.04
+FROM imunes/template:ubuntu-24.04-min
+
+COPY ubuntu-24.04/* /build/
 ```
+and remove ftpd from system_services.sh (the last one)
+```
+
+```
+
 
 ```
 # diff -r ubuntu-24.04-min debian-12-min/
