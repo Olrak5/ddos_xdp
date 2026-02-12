@@ -124,6 +124,13 @@ Run setup script
 ```
 or manually install requirements to image
 (help on [MHDDoS](https://github.com/MatrixTM/MHDDoS))
+```
+apt -y update
+apt install curl wget libcurl4 libssl-dev python3 python3-pip python3-venv make cmake automake autoconf m4 build-essential git
+git clone https://github.com/MatrixTM/MHDDoS.git
+python3 -m venv xdp-venv
+./xdp-venv/bin/pip3 install -r ./MHDDoS/requirements.txt
+```
 
 ### Setup Ubuntu image for XDP
 
