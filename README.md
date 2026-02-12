@@ -16,7 +16,7 @@ or if not available
 IMUNES-Ubuntu_20250307.ova as virtual machine
 
 ### SETTINGS
-4 CPUs
+4 CPUs (or change define in code)
 
 ### LOGIN
 student
@@ -141,6 +141,11 @@ python3 -m venv xdp-venv
 ```
 
 ### Setup Ubuntu image for XDP
+Run setup script
+```bash
+chmod +x ubuntu_xdp_setup.sh
+./ubuntu_xdp_setup.sh
+```
 
 
 
