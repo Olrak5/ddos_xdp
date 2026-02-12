@@ -12,6 +12,7 @@ linux-tools-$(uname -r)
 linux-headers-$(uname -r)
 linux-tools-common linux-tools-generic
 tcpdump
+libbpf-dev libxdp-dev xdp-tools
 
 
 build-essential/oldstable 12.9 amd64
