@@ -164,7 +164,9 @@ Nodes are used for:
   - the CLIENT
 
 SERVER recieves and blocks packets via XDP 
+
 Attackers simulate a DDoS attack 
+
 CLIENT simulates simple regular traffic to the server
 
 The XDP program blocks traffic per proto based of the amount of incoming packets and bytes per second
@@ -231,7 +233,9 @@ CTRL+C to stop attack
 SERVER drops packets of an attacked protocol and lets them through again after it stops for some time.
 
 UDP gets blocked after first check and unblocked.
+
 TCP gets blocked, but starts being unblocked since the ammount of data and packets being sent while connections cant be established is relatively low. After its unblocked it gets blocked again during the next check.
+
 ICMP is blocked just like UDP.
 
 CLIENT recieves ping replies just fine while UDP and TCP attack are ongoing, but an ICMP DDoS blocks all ICMP traffic while it is ongoing and for a bit after it ends.
