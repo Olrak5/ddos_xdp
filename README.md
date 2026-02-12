@@ -118,8 +118,15 @@ Copy image for DDoS attackers
 ```bash
 docker image tag imunes/template:ubuntu-24.04 mhddos:latest
 ```
+Clone repository
+```bash
+# cd 
+git clone https://github.com/Olrak5/ddos_xdp.git
+cd ddos_xdp
+```
 Run setup script
 ```bash
+chmod +x mhddos_setup.sh
 ./mhddos_setup.sh
 ```
 or manually install requirements to image
