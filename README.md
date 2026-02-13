@@ -224,7 +224,7 @@ Start attack
 (type, destIP, destPort, threads, seconds)
 ```bash
 python ./MHDDoS/start.py udp 10.0.3.10:1200 1 1000
-python ./MHDDoS/start.py tcp 10.0.3.10:1201 1 1000
+python ./MHDDoS/start.py syn 10.0.3.10:1201 1 1000  # tcp-syn is a common DDoS attack, tcp attack also possible
 python ./MHDDoS/start.py icmp 10.0.3.10 1 1000
 ```
 CTRL+C to stop attack
@@ -232,9 +232,10 @@ CTRL+C to stop attack
 # RESULT
 SERVER drops packets of an attacked protocol and lets them through again after it stops for some time.
 
-UDP gets blocked after first check and unblocked.
+UDP gets blocked after first check and unblocked after it stops.
 
-TCP gets blocked, but starts being unblocked since the ammount of data and packets being sent while connections cant be established is relatively low. After its unblocked it gets blocked again during the next check.
+TCP SYN attack gets blocked quickly and unblocked after it stops. 
+TCP non-SYN attack gets blocked, but starts being unblocked since the ammount of data and packets being sent while connections cant be established is relatively low. After its unblocked it gets blocked again during the next check.
 
 ICMP is blocked just like UDP.
 
