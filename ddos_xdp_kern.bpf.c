@@ -290,28 +290,6 @@ __u32 enable_proto(__u32 proto)
 }
 
 static __always_inline
-bool check_for_attack(struct net_traffic_info *all_cpu_traffic_info, __u32 proto)
-{
-    __u64 up = (__u64)UPDATE_PERIOD_SEC;
-    __u64 pps = all_cpu_traffic_info->info_per_proto[proto].packet_count 
-                    / up;
-    __u64 bps = all_cpu_traffic_info->info_per_proto[proto].packet_size_sum
-                    / up;
-
-    if (DEBUG_LEVEL > 1)
-        bpf_printk("proto %u pps %u > max %u bps %u > max %u", 
-            proto, pps, MAX_ALLOWED_PACKETS_PER_SECOND, bps, MAX_ALLOWED_BYTES_PER_SECOND);
-    
-    if (pps > MAX_ALLOWED_PACKETS_PER_SECOND 
-            || bps > MAX_ALLOWED_BYTES_PER_SECOND)
-    {
-        return true;
-    }
-
-    return false;
-}
-
-static __always_inline
 __u32 reset_packet_map()
 {
     __u32 key = 0;
@@ -366,6 +344,29 @@ void collect_percpu_traffic_info(struct net_traffic_info *all_cpu_traffic_info)
         }
     }
 }
+
+static __always_inline
+bool check_for_attack(struct net_traffic_info *all_cpu_traffic_info, __u32 proto)
+{
+    __u64 up = (__u64)UPDATE_PERIOD_SEC;
+    __u64 pps = all_cpu_traffic_info->info_per_proto[proto].packet_count 
+                    / up;
+    __u64 bps = all_cpu_traffic_info->info_per_proto[proto].packet_size_sum
+                    / up;
+
+    if (DEBUG_LEVEL > 1)
+        bpf_printk("proto %u pps %u > max %u bps %u > max %u", 
+            proto, pps, MAX_ALLOWED_PACKETS_PER_SECOND, bps, MAX_ALLOWED_BYTES_PER_SECOND);
+    
+    if (pps > MAX_ALLOWED_PACKETS_PER_SECOND 
+            || bps > MAX_ALLOWED_BYTES_PER_SECOND)
+    {
+        return true;
+    }
+
+    return false;
+}
+
 
 static __always_inline
 void parse_packet(
