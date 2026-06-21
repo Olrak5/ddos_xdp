@@ -433,17 +433,8 @@ void parse_packet(
     }
 
 
-    if (eth_proto == bpf_htons(ETH_P_IP) && ip_proto == IPPROTO_ICMP) 
-    {
-        icmp_type = parse_icmphdr_common(&nh, data_end, &icmphdr_c);
-        last_proto = ICMP;
-
-        if (icmp_type < 0) 
-        {
-            action = XDP_DROP;
-            goto out;
-        }
-    } else if (eth_proto == bpf_htons(ETH_P_IPV6) && ip_proto == IPPROTO_ICMPV6) 
+    if (eth_proto == bpf_htons(ETH_P_IP) && ip_proto == IPPROTO_ICMP 
+		|| eth_proto == bpf_htons(ETH_P_IPV6) && ip_proto == IPPROTO_ICMPV6) 
     {
         icmp_type = parse_icmphdr_common(&nh, data_end, &icmphdr_c);
         last_proto = ICMP;
