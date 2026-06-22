@@ -561,7 +561,8 @@ __u32 xdp_ddos_detect_and_drop(struct xdp_md *ctx)
                         current_time - last_attack_time <= DISBLE_TIME && 
                         DEBUG_LEVEL > 0)
                 {
-                    bpf_printk("waiting for attack timeout for %d s", (DISBLE_TIME - (current_time - last_attack_time))/NANOSEC_PER_SEC );
+                    bpf_printk("waiting for attack timeout for %d s", 
+						(DISBLE_TIME - (current_time - last_attack_time))/NANOSEC_PER_SEC );
                 }
             }
         }
