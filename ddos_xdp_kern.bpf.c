@@ -503,20 +503,6 @@ __u32 xdp_ddos_detect_and_drop(struct xdp_md *ctx)
     struct hdr_cursor nh;
     nh.pos = data;
 
-    struct ethhdr *ethhdr;
-    struct iphdr *iphdr;
-    struct ipv6hdr *ipv6hdr;
-    struct icmphdr_common *icmphdr_c;
-    struct tcphdr *tcphdr;
-    struct udphdr *udphdr;
-
-    __u32 nh_proto;
-    __u32 eth_proto;
-    __u32 ip_proto;
-    __u32 icmp_type = -1;
-    __u32 tcp_len;
-    __u32 udp_len;
-
     enum proto_type last_proto;
 
     __u64 packet_size = data_end - data;
