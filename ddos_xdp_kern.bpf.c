@@ -493,9 +493,9 @@ __u32 xdp_ddos_detect_and_drop(struct xdp_md *ctx)
         return XDP_PASS;
     }        
 
-    init_chosen_cpu();
-
     __u64 time_d = current_time - start_time;
+
+    init_chosen_cpu();
 
 	void *data_end = (void *)(long)ctx->data_end;
 	void *data = (void *)(long)ctx->data;
