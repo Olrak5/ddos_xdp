@@ -188,9 +188,11 @@ clang -O2 -g -target bpf -c ddos_xdp_kern.bpf.c -o prog.o
 ```
 Start/Stop program on eth0
 ```bash
-ip link set dev eth0 xdpgeneric obj prog.o sec xdp
+ip link set dev eth0 xdpdrv obj prog.o sec xdp
+# ip link set dev eth0 xdpgeneric obj prog.o sec xdp  generic form wgeb driver lacks support
 
-ip link set dev eth0 xdpgeneric off
+ip link set dev eth0 xdpdrv off
+# ip link set dev eth0 xdpgeneric off  generic form wgeb driver lacks support
 ```
 Mount tracing file system and start reading trace pipe (program print output)
 ```bash
