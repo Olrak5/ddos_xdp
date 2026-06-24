@@ -1,7 +1,7 @@
 # ddos_xdp
 A simple ddos blocker via bpf/xdp written in C.
 
-# INSTALL INSTRUCTIONS 
+# INSTALLATION INSTRUCTIONS 
 
 ## IMUNES
 
@@ -233,7 +233,7 @@ python ./MHDDoS/start.py icmp 10.0.3.10 1 1000
 ```
 CTRL+C to stop attack
 
-# RESULT
+# RESULTS
 SERVER drops packets of an attacked protocol and lets them through again after it stops for some time.
 
 UDP gets blocked after first check and unblocked after it stops.
