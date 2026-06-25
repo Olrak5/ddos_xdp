@@ -290,21 +290,6 @@ __u32 enable_proto(__u32 proto)
 }
 
 static __always_inline
-__u32 reset_packet_map()
-{
-    __u32 key = 0;
-
-    struct net_traffic_info new_net_info;
-    __builtin_memset(&new_net_info, 0, sizeof(new_net_info));
-    bpf_map_update_elem(&recent_packet_map, 
-                        &key, 
-                        &new_net_info, 
-                        0);
-
-    return 0;
-}
-
-static __always_inline
 void collect_percpu_traffic_info(struct net_traffic_info *all_cpu_traffic_info)
 {
     __u32 cpu_i;
